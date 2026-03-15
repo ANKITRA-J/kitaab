@@ -1,0 +1,355 @@
+.loginContainer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #FF6B9D 0%, #4ECDC4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.loginBox {
+  background: #FFF;
+  padding: 50px 40px;
+  border-radius: 20px;
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+}
+
+.loginTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container {
+  min-height: 100vh;
+  background: #1a1a1a;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: #FFC857;
+  border: 4px solid #000;
+  border-radius: 10px;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+.logoutButton {
+  background: #FF006E;
+  color: #FFF;
+  border: 3px solid #000;
+  padding: 10px 25px;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+
+.logoutButton:hover {
+  transform: scale(1.05);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.formSection,
+.listSection {
+  background: #FFF;
+  padding: 30px;
+  border: 4px solid #000;
+  border-radius: 10px;
+}
+
+.sectionTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 25px 0;
+  border-bottom: 3px solid #FF006E;
+  padding-bottom: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.hint {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+  display: block;
+}
+
+.input,
+.textarea {
+  padding: 12px 15px;
+  border: 3px solid #000;
+  border-radius: 5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  background: #F5F5F5;
+  color: #000;
+  transition: all 0.2s;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  background: #FFF;
+  border-color: #FF006E;
+  color: #000;
+}
+
+.textarea {
+  resize: vertical;
+  font-family: 'Noto Serif Devanagari', serif;
+  line-height: 1.6;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 15px;
+}
+
+.submitButton,
+.loginButton {
+  background: #4ECDC4;
+  color: #000;
+  border: 3px solid #000;
+  padding: 12px 30px;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.2s;
+  flex: 1;
+}
+
+.submitButton:hover,
+.loginButton:hover {
+  transform: scale(1.02);
+}
+
+.cancelButton {
+  background: #FFC857;
+  color: #000;
+  border: 3px solid #000;
+  padding: 12px 30px;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+
+.cancelButton:hover {
+  transform: scale(1.02);
+}
+
+.error {
+  color: #FF006E;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 10px;
+  background: #FFE5EE;
+  border: 2px solid #FF006E;
+  border-radius: 5px;
+}
+
+.success {
+  color: #2D6A4F;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 10px;
+  background: #D8F3DC;
+  border: 2px solid #2D6A4F;
+  border-radius: 5px;
+}
+
+.poemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.poemItem {
+  padding: 20px;
+  background: #F5F5F5;
+  border: 3px solid #000;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.poemItem:hover {
+  transform: translateX(5px);
+}
+
+.poemItemTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 10px 0;
+}
+
+.poemItemPreview {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 15px 0;
+  line-height: 1.5;
+}
+
+.poemItemActions {
+  display: flex;
+  gap: 10px;
+}
+
+.editButton {
+  background: #3A86FF;
+  color: #FFF;
+  border: 2px solid #000;
+  padding: 8px 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+
+.editButton:hover {
+  transform: scale(1.05);
+}
+
+.deleteButton {
+  background: #FF006E;
+  color: #FFF;
+  border: 2px solid #000;
+  padding: 8px 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+
+.deleteButton:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .listSection {
+    order: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .loginBox {
+    padding: 30px 25px;
+  }
+
+  .loginTitle {
+    font-size: 24px;
+  }
+}
+
+.fileUploadGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.uploadSection {
+  display: flex;
+  gap: 10px;
+}
+
+.uploadButton {
+  background: #8338EC;
+  color: #FFF;
+  border: 3px solid #000;
+  padding: 10px 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.2s;
+  white-space: nowrap;
+}
+
+.uploadButton:hover:not(:disabled) {
+  transform: scale(1.02);
+}
+
+.uploadButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

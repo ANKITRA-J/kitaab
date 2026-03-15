@@ -1,0 +1,75 @@
+/* Pencil Sketched Poetry Journal with p5.js Particles */
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 100%);
+  overflow: hidden;
+}
+
+.particlesLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particlesLayer canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.poemsView {
+  position: absolute;
+  inset: 0;
+  padding: 3rem;
+  overflow-y: auto;
+  background: linear-gradient(135deg, #f4e8d0 0%, #e8d5b7 100%);
+}
+
+.poemsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.5rem;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Scrollbar */
+.poemsView::-webkit-scrollbar {
+  width: 12px;
+}
+
+.poemsView::-webkit-scrollbar-track {
+  background: rgba(139, 90, 43, 0.1);
+}
+
+.poemsView::-webkit-scrollbar-thumb {
+  background: rgba(139, 69, 19, 0.4);
+  border-radius: 6px;
+}
+
+.poemsView::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 69, 19, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .poemsView {
+    padding: 1.5rem;
+  }
+
+  .poemsGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

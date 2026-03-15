@@ -1,0 +1,42 @@
+/* Rough.js Sketchy Poem Card */
+
+.poemCard {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.poemCard:hover {
+  transform: translateY(-8px) rotate(1deg);
+}
+
+.poemCard:active {
+  transform: translateY(-4px) scale(0.98);
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.poemCard:hover .canvas {
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+}
+
+.poemCard:focus {
+  outline: 2px solid #d4af37;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .poemCard:hover {
+    transform: none;
+  }
+  
+  .poemCard:active {
+    transform: scale(0.98);
+  }
+}

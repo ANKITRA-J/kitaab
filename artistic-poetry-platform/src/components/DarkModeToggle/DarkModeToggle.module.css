@@ -1,0 +1,36 @@
+.toggleButton {
+  position: fixed;
+  bottom: 110px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFC857 0%, #FF6B9D 100%);
+  border: 4px solid #000;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+.toggleButton:hover {
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4);
+}
+
+.toggleButton:active {
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .toggleButton {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    bottom: 90px;
+    right: 20px;
+  }
+}

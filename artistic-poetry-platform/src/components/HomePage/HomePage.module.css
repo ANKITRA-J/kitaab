@@ -1,0 +1,76 @@
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.titleBox {
+  background: transparent;
+  padding: 0;
+  margin-bottom: 8rem;
+  text-align: center;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: transparent;
+  margin: 0;
+  line-height: 1.2;
+  -webkit-text-stroke: 0px transparent;
+}
+
+.enterButton {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: transparent;
+  background: transparent;
+  border: none;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-text-stroke: 0px transparent;
+}
+
+.enterButton:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .enterButton {
+    font-size: 1.4rem;
+    padding: 0.8rem 2rem;
+  }
+
+  .titleBox {
+    margin-bottom: 5rem;
+  }
+}

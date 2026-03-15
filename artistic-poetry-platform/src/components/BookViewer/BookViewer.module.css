@@ -1,0 +1,282 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bookContent {
+  position: relative;
+  z-index: 10;
+  width: 90%;
+  max-width: 900px;
+  height: 80%;
+  max-height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.homeButton {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  background: #FFC857;
+  border: 3px solid #000;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.closeButton {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: #FF006E;
+  border: 3px solid #000;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  color: #FFF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  z-index: 20;
+}
+
+.languageToggle {
+  position: absolute;
+  top: -50px;
+  left: 60px;
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+
+.langButton {
+  background: #FFC857;
+  border: 3px solid #000;
+  padding: 8px 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.langButton.active {
+  background: #FF006E;
+  color: #FFF;
+  transform: scale(1.05);
+}
+
+.langButton:hover {
+  transform: scale(1.05);
+}
+
+.leftPage {
+  padding: 60px 40px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #8B7355 transparent;
+}
+
+.leftPage::-webkit-scrollbar {
+  width: 8px;
+}
+
+.leftPage::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.leftPage::-webkit-scrollbar-thumb {
+  background: #8B7355;
+  border-radius: 4px;
+}
+
+.rightPage {
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poemTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #3A2A1A;
+  margin: 0 0 10px 0;
+  text-align: center;
+  border-bottom: 2px solid #D4AF37;
+  padding-bottom: 15px;
+}
+
+.poemSubtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: #6A5A4A;
+  margin: 0 0 25px 0;
+  text-align: center;
+}
+
+.poemContent {
+  line-height: 2;
+}
+
+.hindiText {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 20px;
+  color: #2A1A0A;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.englishText {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: #2A1A0A;
+  margin: 15px 0;
+  text-align: center;
+  font-style: italic;
+}
+
+.decorativeText {
+  text-align: center;
+}
+
+.quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: #4A3A2A;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.author {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: #6A5A4A;
+  font-weight: 600;
+}
+
+.explanationBox {
+  padding: 30px;
+  text-align: left;
+}
+
+.explanationTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #3A2A1A;
+  margin: 0 0 20px 0;
+  border-bottom: 2px solid #D4AF37;
+  padding-bottom: 10px;
+}
+
+.explanationText {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: #4A3A2A;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.scrollIndicator {
+  position: absolute;
+  left: 20px !important;
+  top: 80px;
+  bottom: 80px;
+  width: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.scrollLine {
+  width: 3px;
+  flex: 1;
+  background: linear-gradient(to bottom, #D4AF37 0%, #8B7355 50%, #D4AF37 100%);
+  border-radius: 3px;
+  box-shadow: 0 0 4px rgba(212, 175, 55, 0.5);
+  position: relative;
+}
+
+.scrollDot {
+  width: 16px;
+  height: 16px;
+  background: #D4AF37;
+  border: 3px solid #8B7355;
+  border-radius: 50%;
+  position: absolute;
+  left: -5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3), 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+@media (max-width: 768px) {
+  .bookContent {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+  }
+
+  .rightPage {
+    display: none;
+  }
+
+  .leftPage {
+    padding: 40px 30px;
+  }
+
+  .poemTitle {
+    font-size: 24px;
+  }
+
+  .hindiText {
+    font-size: 18px;
+  }
+
+  .englishText {
+    font-size: 16px;
+  }
+
+  .languageToggle {
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .closeButton {
+    top: -45px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
