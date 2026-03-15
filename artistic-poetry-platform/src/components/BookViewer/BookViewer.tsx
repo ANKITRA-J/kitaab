@@ -129,7 +129,7 @@ const BookViewer: React.FC<BookViewerProps> = ({ title, subtitle, contentHindi, 
             ✕
           </motion.button>
 
-          {/* Language + audio toggle */}
+          {/* Language toggle - original position */}
           <motion.div className={styles.languageToggle}>
             <button className={`${styles.langButton} ${language === 'hi' ? styles.active : ''}`}
               onClick={() => setLanguage('hi')}>हिंदी</button>
@@ -177,6 +177,36 @@ const BookViewer: React.FC<BookViewerProps> = ({ title, subtitle, contentHindi, 
           <motion.div ref={pageRef} className={styles.leftPage}
             key={language} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4 }}>
+
+            {/* Bookmark tab - sticks out from right edge of page */}
+            {audioUrl && (
+              <motion.button
+                className={styles.bookmarkTab}
+                onClick={() => { setShowAudio(!showAudio); setShowExplanation(false); }}
+                whileTap={{ scale: 0.95 }}
+                title="Listen"
+              >
+                <svg width="36" height="56" viewBox="0 0 36 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Sketchy bookmark ribbon shape - pointed bottom */}
+                  <path d="M3 1 C2 1, 1 2, 1 3 L1 52 L18 43 L35 52 L35 3 C35 2, 34 1, 33 1 Z"
+                    fill={showAudio ? '#FF006E' : '#FFC857'}
+                    stroke="#2A1A0A" strokeWidth="2"
+                    strokeLinejoin="round"
+                  />
+                  {/* Animated music note */}
+                  <motion.g
+                    animate={{ y: showAudio ? [0, -2, 0] : 0 }}
+                    transition={{ duration: 0.7, repeat: showAudio ? Infinity : 0, ease: 'easeInOut' }}
+                  >
+                    <circle cx="13" cy="30" r="3.5" fill={showAudio ? '#FFF' : '#3A2A1A'} />
+                    <circle cx="23" cy="27" r="3.5" fill={showAudio ? '#FFF' : '#3A2A1A'} />
+                    <line x1="16.5" y1="30" x2="16.5" y2="18" stroke={showAudio ? '#FFF' : '#3A2A1A'} strokeWidth="2" strokeLinecap="round" />
+                    <line x1="26.5" y1="27" x2="26.5" y2="15" stroke={showAudio ? '#FFF' : '#3A2A1A'} strokeWidth="2" strokeLinecap="round" />
+                    <line x1="16.5" y1="18" x2="26.5" y2="15" stroke={showAudio ? '#FFF' : '#3A2A1A'} strokeWidth="2" strokeLinecap="round" />
+                  </motion.g>
+                </svg>
+              </motion.button>
+            )}
             <h2 className={styles.poemTitle}>{title}</h2>
             {subtitle && <p className={styles.poemSubtitle}>{subtitle}</p>}
             <div className={styles.poemContent}>
