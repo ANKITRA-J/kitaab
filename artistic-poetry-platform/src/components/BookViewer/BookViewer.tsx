@@ -64,59 +64,36 @@ const BookViewer: React.FC<BookViewerProps> = ({ title, subtitle, contentHindi, 
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
     ctx.fillStyle = '#1a1a1a';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-    const bookWidth = Math.min(isMobile ? canvas.width * 0.92 : 900, canvas.width * 0.92);
-    const bookHeight = Math.min(isMobile ? canvas.height * 0.88 : 600, canvas.height * 0.88);
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2;
+    const bw = Math.min(isMobile ? canvas.width * 0.92 : 900, canvas.width * 0.92);
+    const bh = Math.min(isMobile ? canvas.height * 0.88 : 600, canvas.height * 0.88);
 
-    // Shadow
-    rc.rectangle(centerX - bookWidth / 2 + 8, centerY - bookHeight / 2 + 8, bookWidth, bookHeight, {
-      fill: 'rgba(0,0,0,0.3)', fillStyle: 'solid', roughness: 1, seed,
-    });
+    rc.rectangle(cx - bw / 2 + 8, cy - bh / 2 + 8, bw, bh, { fill: 'rgba(0,0,0,0.3)', fillStyle: 'solid', roughness: 1, seed });
 
     if (isMobile) {
-      // Single page on mobile
-      rc.rectangle(centerX - bookWidth / 2, centerY - bookHeight / 2, bookWidth, bookHeight, {
-        fill: '#F5E6D3', fillStyle: 'solid', stroke: '#8B7355', strokeWidth: 3, roughness: 2, seed: seed + 1,
-      });
+      rc.rectangle(cx - bw / 2, cy - bh / 2, bw, bh, { fill: '#F5E6D3', fillStyle: 'solid', stroke: '#8B7355', strokeWidth: 3, roughness: 2, seed: seed + 1 });
     } else {
-      // Two pages on desktop
-      rc.rectangle(centerX - bookWidth / 2, centerY - bookHeight / 2, bookWidth / 2, bookHeight, {
-        fill: '#F5E6D3', fillStyle: 'solid', stroke: '#8B7355', strokeWidth: 3, roughness: 2, seed: seed + 1,
-      });
-      rc.rectangle(centerX, centerY - bookHeight / 2, bookWidth / 2, bookHeight, {
-        fill: '#F5E6D3', fillStyle: 'solid', stroke: '#8B7355', strokeWidth: 3, roughness: 2, seed: seed + 2,
-      });
-      rc.line(centerX, centerY - bookHeight / 2, centerX, centerY + bookHeight / 2, {
-        stroke: '#6B5345', strokeWidth: 4, roughness: 1.5, seed: seed + 3,
-      });
+      rc.rectangle(cx - bw / 2, cy - bh / 2, bw / 2, bh, { fill: '#F5E6D3', fillStyle: 'solid', stroke: '#8B7355', strokeWidth: 3, roughness: 2, seed: seed + 1 });
+      rc.rectangle(cx, cy - bh / 2, bw / 2, bh, { fill: '#F5E6D3', fillStyle: 'solid', stroke: '#8B7355', strokeWidth: 3, roughness: 2, seed: seed + 2 });
+      rc.line(cx, cy - bh / 2, cx, cy + bh / 2, { stroke: '#6B5345', strokeWidth: 4, roughness: 1.5, seed: seed + 3 });
     }
-
-    // Corner decorations
-    rc.circle(centerX - bookWidth / 2 + 25, centerY - bookHeight / 2 + 25, 14, {
-      stroke: '#D4AF37', strokeWidth: 2, roughness: 1.5, seed: seed + 4,
-    });
-    rc.circle(centerX + bookWidth / 2 - 25, centerY - bookHeight / 2 + 25, 14, {
-      stroke: '#D4AF37', strokeWidth: 2, roughness: 1.5, seed: seed + 5,
-    });
+    rc.circle(cx - bw / 2 + 25, cy - bh / 2 + 25, 14, { stroke: '#D4AF37', strokeWidth: 2, roughness: 1.5, seed: seed + 4 });
+    rc.circle(cx + bw / 2 - 25, cy - bh / 2 + 25, 14, { stroke: '#D4AF37', strokeWidth: 2, roughness: 1.5, seed: seed + 5 });
   }, [seed, isMobile]);
 
   return (
     <AnimatePresence>
-      <motion.div
-        className={styles.container}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.8 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-      >
+      <motion.div className={styles.container}
+        initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.8 }} transition={{ duration: 0.5, ease: 'easeOut' }}>
         <canvas ref={canvasRef} className={styles.canvas} />
 
         <div className={`${styles.bookContent} ${isMobile ? styles.mobile : ''}`}>
+
           {/* Home button */}
           <motion.button className={styles.homeButton} onClick={onClose}
             whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} title="Back to Home">
@@ -129,7 +106,7 @@ const BookViewer: React.FC<BookViewerProps> = ({ title, subtitle, contentHindi, 
             ✕
           </motion.button>
 
-          {/* Language toggle - original position */}
+          {/* Language toggle - original position, left side */}
           <motion.div className={styles.languageToggle}>
             <button className={`${styles.langButton} ${language === 'hi' ? styles.active : ''}`}
               onClick={() => setLanguage('hi')}>हिंदी</button>
@@ -141,72 +118,47 @@ const BookViewer: React.FC<BookViewerProps> = ({ title, subtitle, contentHindi, 
                 📖 About
               </button>
             )}
-            {/* Sketched bookmark audio button */}
-            {audioUrl && (
-              <motion.button
-                className={`${styles.bookmarkBtn} ${showAudio ? styles.bookmarkActive : ''}`}
-                onClick={() => { setShowAudio(!showAudio); setShowExplanation(false); }}
-                whileTap={{ scale: 0.95 }}
-                title="Listen"
-              >
-                <svg width="36" height="48" viewBox="0 0 36 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Sketchy bookmark shape */}
-                  <path d="M4 2 C3 2, 2 3, 2 4 L2 44 L18 36 L34 44 L34 4 C34 3, 33 2, 32 2 Z"
-                    fill={showAudio ? '#FF006E' : '#FFC857'}
-                    stroke="#000" strokeWidth="2.5"
-                    strokeLinejoin="round"
-                    style={{ filter: 'url(#rough)' }}
-                  />
-                  {/* Music note */}
-                  <motion.g
-                    animate={{ y: showAudio ? [0, -2, 0] : 0 }}
-                    transition={{ duration: 0.8, repeat: showAudio ? Infinity : 0, ease: 'easeInOut' }}
-                  >
-                    <circle cx="13" cy="26" r="3" fill={showAudio ? '#FFF' : '#3A2A1A'} />
-                    <circle cx="22" cy="23" r="3" fill={showAudio ? '#FFF' : '#3A2A1A'} />
-                    <line x1="16" y1="26" x2="16" y2="16" stroke={showAudio ? '#FFF' : '#3A2A1A'} strokeWidth="2" strokeLinecap="round" />
-                    <line x1="25" y1="23" x2="25" y2="13" stroke={showAudio ? '#FFF' : '#3A2A1A'} strokeWidth="2" strokeLinecap="round" />
-                    <line x1="16" y1="16" x2="25" y2="13" stroke={showAudio ? '#FFF' : '#3A2A1A'} strokeWidth="2" strokeLinecap="round" />
-                  </motion.g>
-                </svg>
-              </motion.button>
-            )}
           </motion.div>
 
-          {/* Left/main page */}
+          {/* Scroll indicator - outside scrollable area, positioned on left of page */}
+          <div className={styles.scrollIndicator}>
+            <div className={styles.scrollLine} />
+            <motion.div className={styles.scrollDot}
+              animate={{ top: `${scrollProgress * 100}%` }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }} />
+          </div>
+
+          {/* Bookmark tab - sticks out from right edge of the book page */}
+          {audioUrl && (
+            <motion.button
+              className={styles.bookmarkTab}
+              onClick={() => { setShowAudio(!showAudio); setShowExplanation(false); }}
+              whileTap={{ scale: 0.95 }}
+              title="Listen"
+            >
+              <svg width="34" height="54" viewBox="0 0 34 54" fill="none">
+                <path d="M2 2 L32 2 L32 50 L17 42 L2 50 Z"
+                  fill={showAudio ? '#FF006E' : '#FFC857'}
+                  stroke="#2A1A0A" strokeWidth="2.5" strokeLinejoin="round"
+                />
+                <motion.g
+                  animate={{ y: showAudio ? [0, -2, 0] : 0 }}
+                  transition={{ duration: 0.7, repeat: showAudio ? Infinity : 0, ease: 'easeInOut' }}
+                >
+                  <circle cx="12" cy="28" r="3.5" fill={showAudio ? '#FFF' : '#3A2A1A'} />
+                  <circle cx="22" cy="25" r="3.5" fill={showAudio ? '#FFF' : '#3A2A1A'} />
+                  <line x1="15.5" y1="28" x2="15.5" y2="16" stroke={showAudio ? '#FFF' : '#3A2A1A'} strokeWidth="2" strokeLinecap="round" />
+                  <line x1="25.5" y1="25" x2="25.5" y2="13" stroke={showAudio ? '#FFF' : '#3A2A1A'} strokeWidth="2" strokeLinecap="round" />
+                  <line x1="15.5" y1="16" x2="25.5" y2="13" stroke={showAudio ? '#FFF' : '#3A2A1A'} strokeWidth="2" strokeLinecap="round" />
+                </motion.g>
+              </svg>
+            </motion.button>
+          )}
+
+          {/* Left / main page */}
           <motion.div ref={pageRef} className={styles.leftPage}
             key={language} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4 }}>
-
-            {/* Bookmark tab - sticks out from right edge of page */}
-            {audioUrl && (
-              <motion.button
-                className={styles.bookmarkTab}
-                onClick={() => { setShowAudio(!showAudio); setShowExplanation(false); }}
-                whileTap={{ scale: 0.95 }}
-                title="Listen"
-              >
-                <svg width="36" height="56" viewBox="0 0 36 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Sketchy bookmark ribbon shape - pointed bottom */}
-                  <path d="M3 1 C2 1, 1 2, 1 3 L1 52 L18 43 L35 52 L35 3 C35 2, 34 1, 33 1 Z"
-                    fill={showAudio ? '#FF006E' : '#FFC857'}
-                    stroke="#2A1A0A" strokeWidth="2"
-                    strokeLinejoin="round"
-                  />
-                  {/* Animated music note */}
-                  <motion.g
-                    animate={{ y: showAudio ? [0, -2, 0] : 0 }}
-                    transition={{ duration: 0.7, repeat: showAudio ? Infinity : 0, ease: 'easeInOut' }}
-                  >
-                    <circle cx="13" cy="30" r="3.5" fill={showAudio ? '#FFF' : '#3A2A1A'} />
-                    <circle cx="23" cy="27" r="3.5" fill={showAudio ? '#FFF' : '#3A2A1A'} />
-                    <line x1="16.5" y1="30" x2="16.5" y2="18" stroke={showAudio ? '#FFF' : '#3A2A1A'} strokeWidth="2" strokeLinecap="round" />
-                    <line x1="26.5" y1="27" x2="26.5" y2="15" stroke={showAudio ? '#FFF' : '#3A2A1A'} strokeWidth="2" strokeLinecap="round" />
-                    <line x1="16.5" y1="18" x2="26.5" y2="15" stroke={showAudio ? '#FFF' : '#3A2A1A'} strokeWidth="2" strokeLinecap="round" />
-                  </motion.g>
-                </svg>
-              </motion.button>
-            )}
             <h2 className={styles.poemTitle}>{title}</h2>
             {subtitle && <p className={styles.poemSubtitle}>{subtitle}</p>}
             <div className={styles.poemContent}>
@@ -217,7 +169,7 @@ const BookViewer: React.FC<BookViewerProps> = ({ title, subtitle, contentHindi, 
               ))}
             </div>
 
-            {/* Inline audio on mobile */}
+            {/* Inline audio - mobile only */}
             {isMobile && showAudio && audioUrl && (
               <motion.div className={styles.inlineAudio}
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
@@ -225,7 +177,7 @@ const BookViewer: React.FC<BookViewerProps> = ({ title, subtitle, contentHindi, 
               </motion.div>
             )}
 
-            {/* Inline explanation on mobile */}
+            {/* Inline explanation - mobile only */}
             {isMobile && showExplanation && explanation && (
               <motion.div className={styles.explanationBox}
                 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
@@ -233,15 +185,6 @@ const BookViewer: React.FC<BookViewerProps> = ({ title, subtitle, contentHindi, 
                 <p className={styles.explanationText}>{explanation}</p>
               </motion.div>
             )}
-
-            {/* Scroll indicator */}
-            <div className={styles.scrollIndicator}>
-              <div className={styles.scrollLine}></div>
-              <motion.div className={styles.scrollDot}
-                animate={{ top: `${scrollProgress * 100}%` }}
-                transition={{ type: 'spring', stiffness: 300, damping: 30 }}>
-              </motion.div>
-            </div>
           </motion.div>
 
           {/* Right page - desktop only */}

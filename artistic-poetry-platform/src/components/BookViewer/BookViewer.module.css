@@ -1,9 +1,7 @@
 .container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -12,10 +10,8 @@
 
 .canvas {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
 }
 
 .bookContent {
@@ -36,15 +32,14 @@
   max-height: none;
 }
 
+/* Buttons above the book */
 .homeButton {
   position: absolute;
-  top: -54px;
-  left: 0;
+  top: -54px; left: 0;
   background: #FFC857;
   border: 3px solid #000;
   border-radius: 50%;
-  width: 44px;
-  height: 44px;
+  width: 44px; height: 44px;
   font-size: 22px;
   cursor: pointer;
   display: flex;
@@ -55,13 +50,11 @@
 
 .closeButton {
   position: absolute;
-  top: -54px;
-  right: 0;
+  top: -54px; right: 0;
   background: #FF006E;
   border: 3px solid #000;
   border-radius: 50%;
-  width: 44px;
-  height: 44px;
+  width: 44px; height: 44px;
   font-size: 20px;
   color: #FFF;
   cursor: pointer;
@@ -78,7 +71,7 @@
   left: 54px;
   display: flex;
   gap: 8px;
-  align-items: flex-end;
+  align-items: center;
   z-index: 20;
 }
 
@@ -100,31 +93,62 @@
   transform: scale(1.05);
 }
 
-.langButton:hover {
-  transform: scale(1.05);
+.langButton:hover { transform: scale(1.05); }
+
+/* Scroll indicator - positioned on left edge of book, outside scroll area */
+.scrollIndicator {
+  position: absolute;
+  left: -18px;
+  top: 40px;
+  bottom: 40px;
+  width: 6px;
+  z-index: 20;
+  pointer-events: none;
 }
 
-/* Bookmark tab - sticks out from right edge of the page */
+.scrollLine {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  background: linear-gradient(to bottom, #D4AF37, #8B7355, #D4AF37);
+  border-radius: 3px;
+}
+
+.scrollDot {
+  width: 14px; height: 14px;
+  background: #D4AF37;
+  border: 3px solid #8B7355;
+  border-radius: 50%;
+  position: absolute;
+  left: -4px;
+  top: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* Bookmark tab - sticks out from right edge of the page like an ebook bookmark */
 .bookmarkTab {
   position: absolute;
-  right: -18px;
-  top: 60px;
-  width: 36px;
-  height: 56px;
-  cursor: pointer;
-  z-index: 30;
+  right: -34px;
+  top: 50px;
+  width: 34px;
+  height: 54px;
   background: none;
   border: none;
   padding: 0;
-  filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.35));
-  transition: filter 0.2s, transform 0.2s;
+  cursor: pointer;
+  z-index: 30;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
+  transition: transform 0.2s, filter 0.2s;
 }
 
 .bookmarkTab:hover {
   transform: translateX(4px);
-  filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.45));
+  filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.5));
 }
 
+/* Pages */
 .leftPage {
   padding: 50px 40px 50px 50px;
   overflow-y: auto;
@@ -144,6 +168,7 @@
   justify-content: center;
 }
 
+/* Text */
 .poemTitle {
   font-family: 'Playfair Display', serif;
   font-size: 28px;
@@ -185,7 +210,6 @@
 
 .explanationBox {
   padding: 20px;
-  text-align: left;
   background: rgba(212, 175, 55, 0.1);
   border-radius: 4px;
   margin-top: 20px;
@@ -215,80 +239,19 @@
   justify-content: center;
 }
 
-.scrollIndicator {
-  position: absolute;
-  left: 14px;
-  top: 60px;
-  bottom: 60px;
-  width: 6px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.scrollLine {
-  width: 3px;
-  flex: 1;
-  background: linear-gradient(to bottom, #D4AF37, #8B7355, #D4AF37);
-  border-radius: 3px;
-}
-
-.scrollDot {
-  width: 14px;
-  height: 14px;
-  background: #D4AF37;
-  border: 3px solid #8B7355;
-  border-radius: 50%;
-  position: absolute;
-  left: -5px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
-
+/* Mobile */
 @media (max-width: 768px) {
-  .homeButton {
-    top: -50px;
-    width: 38px;
-    height: 38px;
-    font-size: 18px;
-  }
+  .homeButton { top: -50px; width: 38px; height: 38px; font-size: 18px; }
+  .closeButton { top: -50px; width: 38px; height: 38px; font-size: 16px; }
 
-  .closeButton {
-    top: -50px;
-    width: 38px;
-    height: 38px;
-    font-size: 16px;
-  }
+  .languageToggle { top: -50px; left: 48px; }
+  .langButton { font-size: 13px; padding: 4px 10px; height: 38px; }
 
-  .languageToggle {
-    top: -50px;
-    left: 48px;
-  }
+  .scrollIndicator { left: -14px; top: 30px; bottom: 30px; }
 
-  .langButton {
-    font-size: 13px;
-    padding: 4px 10px;
-    height: 38px;
-  }
+  .bookmarkTab { right: -28px; top: 40px; width: 28px; height: 46px; }
 
-  .leftPage {
-    padding: 40px 30px 40px 36px;
-  }
-
-  .bookmarkTab {
-    right: -16px;
-    top: 40px;
-    width: 30px;
-    height: 48px;
-  }
-
-  .scrollIndicator {
-    left: 10px;
-    top: 50px;
-    bottom: 50px;
-  }
-
+  .leftPage { padding: 40px 30px 40px 36px; }
   .poemTitle { font-size: 22px; }
   .hindiText { font-size: 18px; }
   .englishText { font-size: 15px; }
