@@ -22,9 +22,10 @@ export function poemRowToPoem(row: PoemRow): Poem {
   return {
     id: row.id,
     title: row.title,
-    content: row.content,
+    content_hindi: row.content,
+    content_english: row.content,
     language: row.language,
-    audioUrl: row.audio_url,
+    audio_url: row.audio_url ?? undefined,
     createdAt: new Date(row.created_at),
     updatedAt: new Date(row.updated_at),
   };

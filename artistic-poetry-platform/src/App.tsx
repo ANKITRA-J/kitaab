@@ -60,10 +60,6 @@ function App() {
     setSelectedPoem(null)
   }
 
-  const handleCloseBook = () => {
-    setSelectedPoem(null)
-  }
-
   if (showAdmin) {
     return <AdminPanel />
   }

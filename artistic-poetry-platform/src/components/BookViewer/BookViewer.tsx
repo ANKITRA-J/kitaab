@@ -16,7 +16,7 @@ interface BookViewerProps {
   onClose: () => void;
 }
 
-const BookViewer: React.FC<BookViewerProps> = ({ title, subtitle, contentHindi, contentEnglish, explanation, audioUrl, backgroundMusicUrl, onClose }) => {
+const BookViewer: React.FC<BookViewerProps> = ({ title, subtitle, contentHindi, contentEnglish, explanation, audioUrl, onClose }) => {
   const [language, setLanguage] = useState<'hi' | 'en'>('hi');
   const [seed, setSeed] = useState(1);
   const [showExplanation, setShowExplanation] = useState(false);

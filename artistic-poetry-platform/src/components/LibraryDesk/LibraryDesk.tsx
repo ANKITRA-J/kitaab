@@ -12,27 +12,30 @@ const mockPoems: Poem[] = [
   {
     id: '1',
     title: 'Raat',
-    content: 'रात की चुप्पी में\nतारे बोलते हैं\nचाँद सुनता है',
+    content_hindi: 'रात की चुप्पी में\nतारे बोलते हैं\nचाँद सुनता है',
+    content_english: 'In the silence of night\nStars speak softly\nThe moon listens',
     language: 'hi',
-    audioUrl: null,
+    audio_url: undefined,
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
     id: '2',
     title: 'Khamoshi',
-    content: 'खामोशी में छुपे\nहज़ारों लफ़्ज़\nदिल की ज़ुबान',
+    content_hindi: 'खामोशी में छुपे\nहज़ारों लफ़्ज़\nदिल की ज़ुबान',
+    content_english: 'Hidden in silence\nThousands of words\nThe language of heart',
     language: 'hi',
-    audioUrl: null,
+    audio_url: undefined,
     createdAt: new Date(),
     updatedAt: new Date(),
   },
   {
     id: '3',
     title: 'Midnight Whispers',
-    content: 'In the silence of the night\nWords dance on paper\nInk flows like dreams',
+    content_hindi: 'रात के अंधेरे में\nशब्द कागज़ पर नाचते हैं\nस्याही सपनों की तरह बहती है',
+    content_english: 'In the silence of the night\nWords dance on paper\nInk flows like dreams',
     language: 'en',
-    audioUrl: null,
+    audio_url: undefined,
     createdAt: new Date(),
     updatedAt: new Date(),
   },
@@ -318,7 +321,7 @@ const LibraryDesk: React.FC<LibraryDeskProps> = () => {
                     id={poem.id}
                     title={poem.title}
                     language={poem.language}
-                    preview={poem.content.split('\n').slice(0, 3).join('\n')}
+                    preview={poem.content_hindi.split('\n').slice(0, 3).join('\n')}
                     onClick={handlePoemClick}
                   />
                 </motion.div>
