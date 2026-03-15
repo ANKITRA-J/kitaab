@@ -27,19 +27,25 @@
   max-height: 600px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
+}
+
+.bookContent.mobile {
+  grid-template-columns: 1fr;
+  width: 92%;
+  height: 88%;
+  max-height: none;
 }
 
 .homeButton {
   position: absolute;
-  top: -50px;
+  top: -54px;
   left: 0;
   background: #FFC857;
   border: 3px solid #000;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 24px;
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -49,14 +55,14 @@
 
 .closeButton {
   position: absolute;
-  top: -50px;
+  top: -54px;
   right: 0;
   background: #FF006E;
   border: 3px solid #000;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 24px;
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
   color: #FFF;
   cursor: pointer;
   display: flex;
@@ -68,22 +74,24 @@
 
 .languageToggle {
   position: absolute;
-  top: -50px;
-  left: 60px;
+  top: -54px;
+  left: 54px;
   display: flex;
-  gap: 10px;
+  gap: 8px;
+  align-items: flex-end;
   z-index: 20;
 }
 
 .langButton {
   background: #FFC857;
   border: 3px solid #000;
-  padding: 8px 20px;
+  padding: 6px 16px;
   font-family: 'Playfair Display', serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+  height: 44px;
 }
 
 .langButton.active {
@@ -96,28 +104,41 @@
   transform: scale(1.05);
 }
 
+/* Sketched bookmark button */
+.bookmarkBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 4px;
+  display: flex;
+  align-items: flex-end;
+  filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.3));
+  transition: filter 0.2s;
+}
+
+.bookmarkBtn:hover {
+  filter: drop-shadow(2px 3px 4px rgba(0,0,0,0.4));
+}
+
+.bookmarkActive svg path {
+  fill: #FF006E;
+}
+
 .leftPage {
-  padding: 60px 40px;
+  padding: 50px 40px 50px 50px;
   overflow-y: auto;
+  position: relative;
   scrollbar-width: thin;
   scrollbar-color: #8B7355 transparent;
 }
 
-.leftPage::-webkit-scrollbar {
-  width: 8px;
-}
-
-.leftPage::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.leftPage::-webkit-scrollbar-thumb {
-  background: #8B7355;
-  border-radius: 4px;
-}
+.leftPage::-webkit-scrollbar { width: 6px; }
+.leftPage::-webkit-scrollbar-track { background: transparent; }
+.leftPage::-webkit-scrollbar-thumb { background: #8B7355; border-radius: 3px; }
 
 .rightPage {
-  padding: 60px 40px;
+  padding: 50px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,93 +146,80 @@
 
 .poemTitle {
   font-family: 'Playfair Display', serif;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   color: #3A2A1A;
   margin: 0 0 10px 0;
   text-align: center;
   border-bottom: 2px solid #D4AF37;
-  padding-bottom: 15px;
+  padding-bottom: 12px;
 }
 
 .poemSubtitle {
   font-family: 'Playfair Display', serif;
-  font-size: 16px;
+  font-size: 15px;
   font-style: italic;
   color: #6A5A4A;
-  margin: 0 0 25px 0;
+  margin: 0 0 20px 0;
   text-align: center;
 }
 
-.poemContent {
-  line-height: 2;
-}
+.poemContent { line-height: 2; }
 
 .hindiText {
   font-family: 'Noto Serif Devanagari', serif;
   font-size: 20px;
   color: #2A1A0A;
-  margin: 15px 0;
+  margin: 12px 0;
   text-align: center;
 }
 
 .englishText {
   font-family: 'Playfair Display', serif;
-  font-size: 18px;
+  font-size: 17px;
   color: #2A1A0A;
-  margin: 15px 0;
+  margin: 12px 0;
   text-align: center;
   font-style: italic;
-}
-
-.decorativeText {
-  text-align: center;
-}
-
-.quote {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-style: italic;
-  color: #4A3A2A;
-  margin-bottom: 20px;
-  line-height: 1.6;
-}
-
-.author {
-  font-family: 'Playfair Display', serif;
-  font-size: 16px;
-  color: #6A5A4A;
-  font-weight: 600;
 }
 
 .explanationBox {
-  padding: 30px;
+  padding: 20px;
   text-align: left;
+  background: rgba(212, 175, 55, 0.1);
+  border-radius: 4px;
+  margin-top: 20px;
 }
 
 .explanationTitle {
   font-family: 'Playfair Display', serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: #3A2A1A;
-  margin: 0 0 20px 0;
+  margin: 0 0 12px 0;
   border-bottom: 2px solid #D4AF37;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
 }
 
 .explanationText {
   font-family: 'Playfair Display', serif;
-  font-size: 16px;
+  font-size: 15px;
   color: #4A3A2A;
   line-height: 1.8;
   margin: 0;
 }
 
+.inlineAudio {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
 .scrollIndicator {
   position: absolute;
-  left: 20px !important;
-  top: 80px;
-  bottom: 80px;
+  left: 14px;
+  top: 60px;
+  bottom: 60px;
   width: 6px;
   display: flex;
   flex-direction: column;
@@ -223,60 +231,53 @@
 .scrollLine {
   width: 3px;
   flex: 1;
-  background: linear-gradient(to bottom, #D4AF37 0%, #8B7355 50%, #D4AF37 100%);
+  background: linear-gradient(to bottom, #D4AF37, #8B7355, #D4AF37);
   border-radius: 3px;
-  box-shadow: 0 0 4px rgba(212, 175, 55, 0.5);
-  position: relative;
 }
 
 .scrollDot {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   background: #D4AF37;
   border: 3px solid #8B7355;
   border-radius: 50%;
   position: absolute;
   left: -5px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3), 0 0 8px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 @media (max-width: 768px) {
-  .bookContent {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
+  .languageToggle {
+    left: 50%;
+    transform: translateX(-50%);
+    top: -50px;
   }
 
-  .rightPage {
-    display: none;
-  }
-
-  .leftPage {
-    padding: 40px 30px;
-  }
-
-  .poemTitle {
-    font-size: 24px;
-  }
-
-  .hindiText {
+  .homeButton {
+    top: -50px;
+    width: 38px;
+    height: 38px;
     font-size: 18px;
   }
 
-  .englishText {
+  .closeButton {
+    top: -50px;
+    width: 38px;
+    height: 38px;
     font-size: 16px;
   }
 
-  .languageToggle {
-    top: -45px;
-    left: 50%;
-    transform: translateX(-50%);
+  .langButton {
+    font-size: 13px;
+    padding: 4px 10px;
+    height: 38px;
   }
 
-  .closeButton {
-    top: -45px;
-    right: 10px;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
+  .leftPage {
+    padding: 40px 24px 40px 36px;
   }
+
+  .poemTitle { font-size: 22px; }
+  .hindiText { font-size: 18px; }
+  .englishText { font-size: 15px; }
 }
