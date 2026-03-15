@@ -256,3 +256,38 @@
   .hindiText { font-size: 18px; }
   .englishText { font-size: 15px; }
 }
+
+/* Headphone section - mobile only, at bottom of poem */
+.headphoneSection {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 2px dashed #D4AF37;
+  padding-top: 20px;
+}
+
+.headphoneBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.2));
+  transition: filter 0.2s;
+}
+
+.headphoneBtn:hover {
+  filter: drop-shadow(2px 3px 5px rgba(0,0,0,0.35));
+}
+
+.headphoneLabel {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: #6A5A4A;
+  letter-spacing: 0.5px;
+}

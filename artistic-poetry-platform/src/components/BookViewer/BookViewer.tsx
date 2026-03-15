@@ -118,6 +118,14 @@ const BookViewer: React.FC<BookViewerProps> = ({ title, subtitle, contentHindi, 
                 📖 About
               </button>
             )}
+            {audioUrl && isMobile && (
+              <button
+                className={`${styles.langButton} ${showAudio ? styles.active : ''}`}
+                onClick={() => { setShowAudio(!showAudio); setShowExplanation(false); }}
+              >
+                🎵 Listen
+              </button>
+            )}
           </motion.div>
 
           {/* Scroll indicator - outside scrollable area, positioned on left of page */}
@@ -169,12 +177,35 @@ const BookViewer: React.FC<BookViewerProps> = ({ title, subtitle, contentHindi, 
               ))}
             </div>
 
-            {/* Inline audio - mobile only */}
-            {isMobile && showAudio && audioUrl && (
-              <motion.div className={styles.inlineAudio}
-                initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-                <VinylPlayer audioUrl={audioUrl} />
-              </motion.div>
+            {/* Sketched headphone button + inline audio - mobile only */}
+            {isMobile && audioUrl && (
+              <div className={styles.headphoneSection}>
+                <motion.button
+                  className={styles.headphoneBtn}
+                  onClick={() => { setShowAudio(!showAudio); setShowExplanation(false); }}
+                  whileTap={{ scale: 0.92 }}
+                >
+                  <svg width="64" height="48" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 28 C8 14, 56 14, 56 28" stroke="#2A1A0A" strokeWidth="3.5" strokeLinecap="round" fill="none" />
+                    <rect x="4" y="26" width="12" height="16" rx="4"
+                      fill={showAudio ? '#FF006E' : '#FFC857'} stroke="#2A1A0A" strokeWidth="2.5" />
+                    <rect x="48" y="26" width="12" height="16" rx="4"
+                      fill={showAudio ? '#FF006E' : '#FFC857'} stroke="#2A1A0A" strokeWidth="2.5" />
+                    <line x1="7" y1="31" x2="13" y2="31" stroke="#2A1A0A" strokeWidth="1.5" strokeLinecap="round" />
+                    <line x1="7" y1="35" x2="13" y2="35" stroke="#2A1A0A" strokeWidth="1.5" strokeLinecap="round" />
+                    <line x1="51" y1="31" x2="57" y2="31" stroke="#2A1A0A" strokeWidth="1.5" strokeLinecap="round" />
+                    <line x1="51" y1="35" x2="57" y2="35" stroke="#2A1A0A" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                  <span className={styles.headphoneLabel}>{showAudio ? 'Hide Player' : 'Listen'}</span>
+                </motion.button>
+
+                {showAudio && (
+                  <motion.div className={styles.inlineAudio}
+                    initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+                    <VinylPlayer audioUrl={audioUrl} />
+                  </motion.div>
+                )}
+              </div>
             )}
 
             {/* Inline explanation - mobile only */}
